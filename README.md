@@ -167,7 +167,7 @@ Presentation Layer(API)-->>User: Return Success/Failure
 
 ## Fetching a List of Places
 
-A user requests a list of places based on certain criteria.
+### A user requests a list of places based on certain criteria.
 
 ```mermaid
 sequenceDiagram
