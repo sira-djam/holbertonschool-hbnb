@@ -86,16 +86,16 @@ Place "0.n" <|--|> "1" Amenity
 ```
 ## Class Description
 
-User : class containing user information like names, email, password... It can list places created.
-Place : class containing places information like description, price, location... It can list associated amenities and reviews.
-Review : class containing reviews information like ratings and comments.
-Amenity : class containing amenities information like name and description.
+User : class containing user information like names, email, password... It can list places created.\
+Place : class containing places information like description, price, location... It can list associated amenities and reviews.\
+Review : class containing reviews information like ratings and comments.\
+Amenity : class containing amenities information like name and description.\
 BaseModel : Abstract Base Class containing information common to all classes of the BusinessLogicLayer
 
 ## Class Relationships
 
-All classes inherits attributes and methods from ABC BaseModel
-Users : can creates multiple reviews and owns multiples places
-Places : owned by a User, can have list of amenities and can be reviewed multiple times.
-Amenities : associated with a Place.
+All classes inherits attributes and methods from ABC BaseModel\
+Users : can creates multiple reviews and owns multiples places\
+Places : owned by a User, can have list of amenities and can be reviewed multiple times.\
+Amenities : associated with a Place.\
 Reviews : can be created by User about Place.
