@@ -108,6 +108,10 @@ Develop sequence diagrams for at least four different API calls to illustrate th
 
 ---
 
+## User Registration
+
+A user signs up for a new account.
+
 ```mermaid
 sequenceDiagram
 participant User
