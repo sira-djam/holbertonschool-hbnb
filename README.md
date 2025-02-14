@@ -126,6 +126,11 @@ Persistence Layer(Database)-->>Business Logic Layer(Models): Confirm Save
 Business Logic Layer(Models)-->>Presentation Layer(API): Return Response
 Presentation Layer(API)-->>User: Return Success/Failure
 ```
+
+## Place Creation
+
+A user creates a new place listing.
+
 ```mermaid
 sequenceDiagram
 participant User
@@ -140,6 +145,11 @@ Persistence Layer(Database)-->>Business Logic Layer(Models): Confirm Save
 Business Logic Layer(Models)-->>Presentation Layer(API): Return Response
 Presentation Layer(API)-->>User: Return Success/Failure
 ```
+
+## Review Submission
+
+A user submits a review for a place.
+
 ```mermaid
 sequenceDiagram
 participant User
@@ -154,6 +164,11 @@ Persistence Layer(Database)-->>Business Logic Layer(Models): Confirm Save
 Business Logic Layer(Models)-->>Presentation Layer(API): Return Response
 Presentation Layer(API)-->>User: Return Success/Failure
 ```
+
+## Fetching a List of Places
+
+A user requests a list of places based on certain criteria.
+
 ```mermaid
 sequenceDiagram
 participant User
