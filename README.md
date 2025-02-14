@@ -16,7 +16,8 @@ class PersistenceLayer {
 PresentationLayer --> FacadePattern : Calls API
 FacadePattern --> BusinessLogicLayer : Calls Business Methods
 BusinessLogicLayer --> PersistenceLayer : Database Operations
-
+```
+```mermaid
 classDiagram
 direction RL
 class BaseModel:::className {
