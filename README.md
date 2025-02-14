@@ -102,6 +102,12 @@ Reviews : can be created by User about Place.
 
 ---
 
+# Objective
+
+Develop sequence diagrams for at least four different API calls to illustrate the interaction between the layers (Presentation, Business Logic, Persistence) and the flow of information within the HBnB application. The sequence diagrams will help visualize how different components of the system interact to fulfill specific use cases, showing the step-by-step process of handling API requests.
+
+---
+
 ```mermaid
 sequenceDiagram
 participant User
