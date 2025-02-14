@@ -55,8 +55,6 @@ class Amenity {
     string Name
     string Description
 }
-classDef default fill:#808080,stroke:#00ffff,stroke-width:2px,color:white;
-classDef className fill:#3a8eba,stroke:#00ffff,stroke-width:2px;
 User <|-- BaseModel
 Place <|-- BaseModel
 Review <|-- BaseModel
