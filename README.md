@@ -1,1 +1,19 @@
-![High-Level Package Diagram](mermaid-diagram-2025-02-14-112824)
+```mermaid
+classDiagram
+class PresentationLayer {
+    <<Interface>>
+    +ServiceAPI
+}
+class FacadePattern {
+    +handleRequest
+}
+class BusinessLogicLayer {
+    +ModelClasses
+}
+class PersistenceLayer {
+    +DatabaseAccess
+}
+PresentationLayer --> FacadePattern : Calls API
+FacadePattern --> BusinessLogicLayer : Calls Business Methods
+BusinessLogicLayer --> PersistenceLayer : Database Operations
+```
