@@ -110,7 +110,7 @@ Develop sequence diagrams for at least four different API calls to illustrate th
 
 ## User Registration
 
-A user signs up for a new account.
+### A user signs up for a new account.
 
 ```mermaid
 sequenceDiagram
@@ -129,7 +129,7 @@ Presentation Layer(API)-->>User: Return Success/Failure
 
 ## Place Creation
 
-A user creates a new place listing.
+### A user creates a new place listing.
 
 ```mermaid
 sequenceDiagram
@@ -148,7 +148,7 @@ Presentation Layer(API)-->>User: Return Success/Failure
 
 ## Review Submission
 
-A user submits a review for a place.
+### A user submits a review for a place.
 
 ```mermaid
 sequenceDiagram
