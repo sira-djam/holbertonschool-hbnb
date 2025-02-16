@@ -1,3 +1,9 @@
+# Objective
+
+Design a detailed class diagram for the Business Logic layer of the HBnB application. This diagram will depict the entities within this layer, their attributes, methods, and the relationships between them. The primary goal is to provide a clear and detailed visual representation of the core business logic, focusing on the key entities: User, Place, Review, and Amenity.
+
+---
+
 ```mermaid
 classDiagram
 direction RL
@@ -37,8 +43,6 @@ class Amenity {
     string Name
     string Description
 }
-classDef default fill:#808080,stroke:#00ffff,stroke-width:2px,color:white;
-classDef className fill:#3a8eba,stroke:#00ffff,stroke-width:2px;
 User <|-- BaseModel
 Place <|-- BaseModel
 Review <|-- BaseModel
@@ -48,3 +52,18 @@ User "0.n" <|--|> "1" Review
 Place "0.n" <|--|> "1" Review
 Place "0.n" <|--|> "1" Amenity
 ```
+## Class Description
+
+User : class containing user information like names, email, password... It can list places created.\
+Place : class containing places information like description, price, location... It can list associated amenities and reviews.\
+Review : class containing reviews information like ratings and comments.\
+Amenity : class containing amenities information like name and description.\
+BaseModel : Abstract Base Class containing information common to all classes of the BusinessLogicLayer
+
+## Class Relationships
+
+All classes inherits attributes and methods from ABC BaseModel\
+Users : can creates multiple reviews and owns multiples places\
+Places : owned by a User, can have list of amenities and can be reviewed multiple times.\
+Amenities : associated with a Place.\
+Reviews : can be created by User about Place.
