@@ -11,8 +11,9 @@ Business Logic Layer(Models)->>Persistence Layer(Database): Save Data
 Persistence Layer(Database)-->>Business Logic Layer(Models): Confirm Save
 Business Logic Layer(Models)-->>Presentation Layer(API): Return Response
 Presentation Layer(API)-->>User: Return Success/Failure
+```
 
-
+```mermaid
 sequenceDiagram
 participant User
 participant Presentation Layer(API)
@@ -25,8 +26,9 @@ Business Logic Layer(Models)->>Persistence Layer(Database): Save Data
 Persistence Layer(Database)-->>Business Logic Layer(Models): Confirm Save
 Business Logic Layer(Models)-->>Presentation Layer(API): Return Response
 Presentation Layer(API)-->>User: Return Success/Failure
+```
 
-
+```mermaid
 sequenceDiagram
 participant User
 participant Presentation Layer(API)
@@ -39,8 +41,9 @@ Business Logic Layer(Models)->>Persistence Layer(Database): Save Data
 Persistence Layer(Database)-->>Business Logic Layer(Models): Confirm Save
 Business Logic Layer(Models)-->>Presentation Layer(API): Return Response
 Presentation Layer(API)-->>User: Return Success/Failure
+```
 
-
+```mermaid
 sequenceDiagram
 participant User
 participant Presentation Layer(API)
