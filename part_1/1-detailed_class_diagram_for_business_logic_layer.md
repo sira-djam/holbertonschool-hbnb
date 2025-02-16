@@ -7,7 +7,7 @@ Design a detailed class diagram for the Business Logic layer of the HBnB applica
 ```mermaid
 classDiagram
 direction RL
-class BaseModel:::base {
+class BaseModel {
     <<Abstract Base Class>>
     int id
     string datetime
@@ -54,7 +54,7 @@ Place "0.n" <|--|> "1" Amenity
 
 %% Custom CSS for Mermaid
 classDef default fill:#808080;
-classDef base fill:#3a8eba;
+classDef BaseModel fill:#3a8eba;
 
 ```
 ## Class Description
