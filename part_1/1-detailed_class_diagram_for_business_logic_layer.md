@@ -53,8 +53,8 @@ Place "0.n" <|--|> "1" Review
 Place "0.n" <|--|> "1" Amenity
 
 %% Custom CSS for Mermaid
-classDef default fill:#808080,stroke:#00ffff,stroke-width:2px,color:white;
-classDef base fill:#3a8eba,stroke:#00ffff,stroke-width:2px;
+classDef default fill:#808080,stroke:#00ffff,color:white;
+classDef base fill:#3a8eba,stroke:#00ffff;
 
 User:::default
 Place:::default
