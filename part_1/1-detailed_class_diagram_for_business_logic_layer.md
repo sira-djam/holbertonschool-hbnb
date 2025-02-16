@@ -58,7 +58,7 @@ style Place fill:#808080,stroke:#00ffff,stroke-width:2px,color:white;
 style Review fill:#808080,stroke:#00ffff,stroke-width:2px,color:white;
 style Amenity fill:#808080,stroke:#00ffff,stroke-width:2px,color:white;
 style BaseModel fill:#3a8eba,stroke:#00ffff,stroke-width:2px,color:white;
-linkStyle 0 stroke:ff0000,stroke-width:2px;
+linkStyle 0 stroke:ff0000;
 
 ```
 ## Class Description
