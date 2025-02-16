@@ -54,6 +54,10 @@ Place "0.n" <|--|> "1" Amenity
 
 %% Custom CSS for Mermaid
 style User fill:#808080,stroke:#00ffff,stroke-width:2px,color:white;
+style Place fill:#808080,stroke:#00ffff,stroke-width:2px,color:white;
+style Review fill:#808080,stroke:#00ffff,stroke-width:2px,color:white;
+style Amenity fill:#808080,stroke:#00ffff,stroke-width:2px,color:white;
+style BaseModel fill:#3a8eba,stroke:#00ffff,stroke-width:2px,color:white;
 
 ```
 ## Class Description
