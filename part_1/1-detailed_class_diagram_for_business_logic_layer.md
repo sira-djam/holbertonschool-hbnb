@@ -7,7 +7,7 @@ Design a detailed class diagram for the Business Logic layer of the HBnB applica
 ```mermaid
 classDiagram
 direction RL
-class BaseModel:::className {
+class BaseModel:::base {
     <<Abstract Base Class>>
     int id
     string datetime
@@ -56,11 +56,6 @@ Place "0.n" <|--|> "1" Amenity
 classDef default fill:#808080;
 classDef base fill:#3a8eba;
 
-User:::default
-Place:::default
-Review:::default
-Amenity:::default
-BaseModel:::base
 ```
 ## Class Description
 
