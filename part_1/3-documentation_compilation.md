@@ -29,6 +29,12 @@ class PersistenceLayer {
 PresentationLayer --> FacadePattern : Calls API
 FacadePattern --> BusinessLogicLayer : Calls Business Methods
 BusinessLogicLayer --> PersistenceLayer : Database Operations
+
+%% Custom CSS for Mermaid
+style PresentationLayer fill:#808080,stroke:#00ffff,stroke-width:2px,color:white;
+style FacadePattern fill:#808080,stroke:#00ffff,stroke-width:2px,color:white;
+style BusinessLogicLayer fill:#808080,stroke:#00ffff,stroke-width:2px,color:white;
+style PersistenceLayer fill:#808080,stroke:#00ffff,stroke-width:2px,color:white;
 ```
 1.PresentationLayer : This layer handles the interaction between the user and the application. It includes all the services and APIs that are exposed to the users.\
 2.FacadePattern : This layer acts as an intermediary, grouping together calls to differents components of a subsystem and providing a simpler interface for the user.\
@@ -90,6 +96,13 @@ User "1.*" <|--|>"1" Place
 User "0.n" <|--|> "1" Review
 Place "0.n" <|--|> "1" Review
 Place "0.n" <|--|> "1" Amenity
+
+%% Custom CSS for Mermaid
+style User fill:#808080,stroke:#00ffff,stroke-width:2px,color:white;
+style Place fill:#808080,stroke:#00ffff,stroke-width:2px,color:white;
+style Review fill:#808080,stroke:#00ffff,stroke-width:2px,color:white;
+style Amenity fill:#808080,stroke:#00ffff,stroke-width:2px,color:white;
+style BaseModel fill:#3a8eba,stroke:#00ffff,stroke-width:2px,color:white;
 ```
 ### Class Description
 
