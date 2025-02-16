@@ -51,6 +51,16 @@ User "1.*" <|--|>"1" Place
 User "0.n" <|--|> "1" Review
 Place "0.n" <|--|> "1" Review
 Place "0.n" <|--|> "1" Amenity
+
+%% Custom CSS for Mermaid
+classDef default fill:#808080,stroke:#00ffff,stroke-width:2px,color:white;
+classDef base fill:#3a8eba,stroke:#00ffff,stroke-width:2px;
+
+User:::default
+Place:::default
+Review:::default
+Amenity:::default
+BaseModel:::base
 ```
 ## Class Description
 
