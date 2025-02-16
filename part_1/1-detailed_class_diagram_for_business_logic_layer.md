@@ -54,7 +54,6 @@ Place "0.n" <|--|> "1" Amenity
 
 %% Custom CSS for Mermaid
 classDef default fill:#808080;
-classDef BaseModel fill:#3a8eba;
 
 ```
 ## Class Description
