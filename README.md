@@ -17,7 +17,7 @@ HBnB (AirBnB Clone) project is about creating, step by step, a complete web appl
 [Projet HBNB](https://github.com/JorreJ/holbertonschool-hbnb)
 
 
-## UML
+## Part 1 : UML
 - 0 High-Level Package Diagram
 - 1 Detailed Class Diagram for Business Logic Layer
 - 2 Sequence Diagrams for API Calls
@@ -45,6 +45,37 @@ Develop sequence diagrams for at least four different API calls to illustrate th
 Compile all the diagrams and explanatory notes created in the previous tasks into a comprehensive technical document. This document will serve as a detailed blueprint for the HBnB project, guiding the implementation phases and providing a clear reference for the system’s architecture and design.
 
 [Technical Documentation](https://github.com/JorreJ/holbertonschool-hbnb/blob/main/part_1/3-documentation_compilation.md)
+
+## Part 2 : BL and API
+
+- Directories and files purposes
+- Requirements
+
+### Directories and files purposes
+
+- The `app/` directory contains the core application code.
+- The `api/` subdirectory houses the API endpoints, organized by version (`v1/`).
+- The `models/` subdirectory contains the business logic classes (e.g., `user.py`, `place.py`).
+- The `services/` subdirectory is where the Facade pattern is implemented, managing the interaction between layers.
+- The `persistence/` subdirectory is where the in-memory repository is implemented. This will later be replaced by a database-backed solution using SQL Alchemy.
+- `run.py` is the entry point for running the Flask application.
+- `config.py` will be used for configuring environment variables and application settings.
+- `requirements.txt` will list all the Python packages needed for the project.
+- `README.md` will contain a brief overview of the project.
+
+### Requirements
+
+to install dependencies :
+
+```text
+pip install -r requirements.txt
+```
+
+to run the application :
+
+```text
+python run.py
+```
 
 ## Authors
 
