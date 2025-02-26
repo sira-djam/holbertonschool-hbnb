@@ -2,6 +2,8 @@
 
 
 from datetime import datetime
+from app.models.place import Place
+from app.models.user import User
 
 class Review:
     def __init__(self, id, text, rating, place, user):
