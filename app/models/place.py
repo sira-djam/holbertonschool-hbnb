@@ -61,3 +61,24 @@ class Place:
                 f"Latitude: {self.latitude}, Longitude: {self.longitude}, "
                 f"Owner: {self.owner.first_name} {self.owner.last_name}, "
                 f"Created at: {self.created_at}, Last updated: {self.updated_at})")
+
+# Example usage
+try:
+    user = User(id="1", first_name="John", last_name="Doe", email="john.doe@example.com")
+    place = Place(
+        id="p1",
+        title="Cozy Cottage",
+        description="A small, cozy cottage by the lake.",
+        price=100.0,
+        latitude=45.0,
+        longitude=-93.0,
+        owner=user
+    )
+    print(place)
+
+    # Update place information
+    place.update(title="Luxury Cottage", price=150.0, latitude=46.0)
+    print(place)
+except ValueError as e:
+    print(f"Error: {e}")
+
