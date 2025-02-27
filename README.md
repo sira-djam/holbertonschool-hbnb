@@ -85,11 +85,40 @@ In this task, we have :
 2. Ensured relationships
 3. Handled attribute validation and updates
 
-- [BaseModel](https://github.com/JorreJ/holbertonschool-hbnb/blob/main/app/models/basemodel.py) : Contains commonn atributes of all classes
+- [BaseModel](https://github.com/JorreJ/holbertonschool-hbnb/blob/main/app/models/basemodel.py) : Contains common atributes of all classes
 - [User](https://github.com/JorreJ/holbertonschool-hbnb/blob/main/app/models/user.py) : Contains user informations and list of places owned
 - [Place](https://github.com/JorreJ/holbertonschool-hbnb/blob/main/app/models/place.py) : Contains place informations and list of amenities and reviews associated
 - [Amenity](https://github.com/JorreJ/holbertonschool-hbnb/blob/main/app/models/amenity.py) : Contains amenity informations
 - [Review](https://github.com/JorreJ/holbertonschool-hbnb/blob/main/app/models/review.py) : Contains review information
+
+#### Exemples
+
+##### Create a user :
+
+```python
+from app.models.user import User
+
+user = User(first_name="John", last_name="Doe", email="john.doe@example.com")
+```
+
+##### Create a place :
+
+```python
+from app.models.user import User
+from app.models.place import Place
+from app.models.review import Review
+
+owner = User(first_name="Alice", last_name="Smith", email="alice.smith@example.com")
+place = Place(title="Cozy Apartment", description="A nice place to stay", price=100, latitude=37.7749, longitude=-122.4194, owner=owner)
+```
+
+##### Create an amenity :
+
+```python
+from app.models.amenity import Amenity
+
+amenity = Amenity(name="Wi-Fi")
+```
 
 ## Authors
 
