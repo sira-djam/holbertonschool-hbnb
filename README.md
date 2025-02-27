@@ -82,14 +82,14 @@ python run.py
 In this task, we have :
 
 1. Implemented classes
-2. Ensure relationships
-3. Handle attribute validation and updates
+2. Ensured relationships
+3. Handled attribute validation and updates
 
-- [BaseModel](https://github.com/JorreJ/holbertonschool-hbnb/blob/main/app/models/basemodel.py)
-- [User](https://github.com/JorreJ/holbertonschool-hbnb/blob/main/app/models/user.py)
-- [Place](https://github.com/JorreJ/holbertonschool-hbnb/blob/main/app/models/place.py)
-- [Amenity](https://github.com/JorreJ/holbertonschool-hbnb/blob/main/app/models/amenity.py)
-- [Review](https://github.com/JorreJ/holbertonschool-hbnb/blob/main/app/models/review.py)
+- [BaseModel](https://github.com/JorreJ/holbertonschool-hbnb/blob/main/app/models/basemodel.py) : Contains commonn atributes of all classes
+- [User](https://github.com/JorreJ/holbertonschool-hbnb/blob/main/app/models/user.py) : Contains user informations and list of places owned
+- [Place](https://github.com/JorreJ/holbertonschool-hbnb/blob/main/app/models/place.py) : Contains place informations and list of amenities and reviews associated
+- [Amenity](https://github.com/JorreJ/holbertonschool-hbnb/blob/main/app/models/amenity.py) : Contains amenity informations
+- [Review](https://github.com/JorreJ/holbertonschool-hbnb/blob/main/app/models/review.py) : Contains review information
 
 ## Authors
 
