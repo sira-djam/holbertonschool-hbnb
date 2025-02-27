@@ -77,6 +77,14 @@ to run the application :
 python run.py
 ```
 
+### Entities
+
+- [BaseModel] ()
+- [User] (https://github.com/JorreJ/holbertonschool-hbnb/blob/main/app/models/user.py)
+- [Place] (https://github.com/JorreJ/holbertonschool-hbnb/blob/main/app/models/place.py)
+- [Amenity] (https://github.com/JorreJ/holbertonschool-hbnb/blob/main/app/models/amenity.py)
+- [Review] (https://github.com/JorreJ/holbertonschool-hbnb/blob/main/app/models/review.py)
+
 ## Authors
 
 - [@Jade Jorré](https://github.com/JorreJ)

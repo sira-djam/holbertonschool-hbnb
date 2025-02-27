@@ -3,17 +3,15 @@
 
 
 import re
-from datetime import datetime
+from app.models.basemodel import BaseModel
 
-class User:
-    def __init__(self, id, first_name, last_name, email, is_admin=False):
-        self.id = id
+class User(BaseModel):
+    def __init__(self, first_name, last_name, email, is_admin=False):
         self.first_name = self.validate_first_name(first_name)
         self.last_name = self.validate_last_name(last_name)
         self.email = self.validate_email(email)
         self.is_admin = is_admin
-        self.created_at = datetime.now()
-        self.updated_at = self.created_at
+        self.places = [] # List of places owned
 
     def validate_first_name(self, first_name):
         if not first_name or len(first_name) > 50:
@@ -32,31 +30,19 @@ class User:
             raise ValueError("Email must be in a valid format.")
         # Assuming we would check for email uniqueness in a larger system
         return email
+    
+    def add_place(self, place):
+        from app.models.place import Place
+        if not isinstance(place, Place):
+            raise TypeError("The place does not exist")
+        self.places.append(place)
 
-    def update(self, first_name=None, last_name=None, email=None, is_admin=None):
-        if first_name:
-            self.first_name = self.validate_first_name(first_name)
-        if last_name:
-            self.last_name = self.validate_last_name(last_name)
-        if email:
-            self.email = self.validate_email(email)
-        if is_admin is not None:
-            self.is_admin = is_admin
-        self.updated_at = datetime.now()
+    def list_places(self):
+        for x in self.places:
+            print(f"{x}")
 
     def __str__(self):
         return f"User({self.id}, {self.first_name} {self.last_name}, {self.email}, Admin: {self.is_admin}, Created at: {self.created_at}, Last updated: {self.updated_at})"
-
-# Example Usage
-try:
-    user = User(id="12345", first_name="John", last_name="Doe", email="john.doe@example.com")
-    print(user)
-
-    # Update user information
-    user.update(first_name="Jane", email="jane.doe@example.com", is_admin=True)
-    print(user)
-except ValueError as e:
-    print(f"Error: {e}")
 
 
 

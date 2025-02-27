@@ -1,22 +1,21 @@
 #!/user/bin/python3
 '''creat class place'''
 
-from datetime import datetime
+from app.models.basemodel import BaseModel
+from app.models.review import Review
+from app.models.amenity import Amenity
 
-from app.models.user import User
 
-
-class Place:
-    def __init__(self, id, title, description, price, latitude, longitude, owner):
-        self.id = id
+class Place(BaseModel):
+    def __init__(self, title, description, price, latitude, longitude, owner):
         self.title = self.validate_title(title)
         self.description = description
         self.price = self.validate_price(price)
         self.latitude = self.validate_latitude(latitude)
         self.longitude = self.validate_longitude(longitude)
         self.owner = self.validate_owner(owner)
-        self.created_at = datetime.now()
-        self.updated_at = self.created_at
+        self.reviews = [] # List of related reviews
+        self.amenities = [] # List of related amenities
 
     def validate_title(self, title):
         if not title or len(title) > 100:
@@ -39,46 +38,31 @@ class Place:
         return longitude
 
     def validate_owner(self, owner):
+        from app.models.user import User
         if not isinstance(owner, User):
             raise ValueError("Owner must be a valid User instance.")
         return owner
 
-    def update(self, title=None, description=None, price=None, latitude=None, longitude=None):
-        if title:
-            self.title = self.validate_title(title)
-        if description:
-            self.description = description
-        if price is not None:
-            self.price = self.validate_price(price)
-        if latitude is not None:
-            self.latitude = self.validate_latitude(latitude)
-        if longitude is not None:
-            self.longitude = self.validate_longitude(longitude)
-        self.updated_at = datetime.now()
+    def add_review(self, review):
+        if not isinstance(review, Review):
+            raise TypeError("the review does not exist")
+        self.reviews.append(review)
+
+    def add_amenity(self, amenity):
+        if not isinstance(amenity, Amenity):
+            raise TypeError("the amenity does not exist")
+        self.amenities.append(amenity)
+
+    def list_reviews(self):
+        for x in self.reviews:
+            print(f"{x}")
+
+    def list_amenities(self):
+        for x in self.amenities:
+            print(f"{x}")
 
     def __str__(self):
         return (f"Place({self.id}, {self.title}, {self.price}, "
                 f"Latitude: {self.latitude}, Longitude: {self.longitude}, "
                 f"Owner: {self.owner.first_name} {self.owner.last_name}, "
                 f"Created at: {self.created_at}, Last updated: {self.updated_at})")
-
-# Example usage
-try:
-    user = User(id="1", first_name="John", last_name="Doe", email="john.doe@example.com")
-    place = Place(
-        id="p1",
-        title="Cozy Cottage",
-        description="A small, cozy cottage by the lake.",
-        price=100.0,
-        latitude=45.0,
-        longitude=-93.0,
-        owner=user
-    )
-    print(place)
-
-    # Update place information
-    place.update(title="Luxury Cottage", price=150.0, latitude=46.0)
-    print(place)
-except ValueError as e:
-    print(f"Error: {e}")
-
