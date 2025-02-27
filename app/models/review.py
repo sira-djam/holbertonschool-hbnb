@@ -4,6 +4,7 @@ from app.models.basemodel import BaseModel
 
 class Review(BaseModel):
     def __init__(self, text, rating, place, user):
+        super().__init__()
         self.text = self.validate_text(text)
         self.rating = self.validate_rating(rating)
         self.place = self.validate_place(place)
