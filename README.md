@@ -79,11 +79,17 @@ python run.py
 
 ### Entities
 
-- [BaseModel] ()
-- [User] (https://github.com/JorreJ/holbertonschool-hbnb/blob/main/app/models/user.py)
-- [Place] (https://github.com/JorreJ/holbertonschool-hbnb/blob/main/app/models/place.py)
-- [Amenity] (https://github.com/JorreJ/holbertonschool-hbnb/blob/main/app/models/amenity.py)
-- [Review] (https://github.com/JorreJ/holbertonschool-hbnb/blob/main/app/models/review.py)
+In this task, we have :
+
+1. Implemented classes
+2. Ensure relationships
+3. Handle attribute validation and updates
+
+- [BaseModel](https://github.com/JorreJ/holbertonschool-hbnb/blob/main/app/models/basemodel.py)
+- [User](https://github.com/JorreJ/holbertonschool-hbnb/blob/main/app/models/user.py)
+- [Place](https://github.com/JorreJ/holbertonschool-hbnb/blob/main/app/models/place.py)
+- [Amenity](https://github.com/JorreJ/holbertonschool-hbnb/blob/main/app/models/amenity.py)
+- [Review](https://github.com/JorreJ/holbertonschool-hbnb/blob/main/app/models/review.py)
 
 ## Authors
 
