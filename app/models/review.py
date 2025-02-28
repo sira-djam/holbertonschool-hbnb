@@ -3,12 +3,12 @@
 from app.models.basemodel import BaseModel
 
 class Review(BaseModel):
-    def __init__(self, text, rating, place, user):
+    def __init__(self, text, rating, place_id, user_id):
         super().__init__()
         self.text = self.validate_text(text)
         self.rating = self.validate_rating(rating)
-        self.place = self.validate_place(place)
-        self.user = self.validate_user(user)
+        self.place_id = self.validate_place(place_id)
+        self.user_id = self.validate_user(user_id)
 
     def validate_text(self, text):
         if not text:
@@ -20,17 +20,19 @@ class Review(BaseModel):
             raise ValueError("Rating must be between 1 and 5.")
         return rating
 
-    def validate_place(self, place):
-        from app.models.place import Place
-        if not isinstance(place, Place):
+    def validate_place(self, place_id):
+        from app.services import facade
+        place = facade.place_repo.get(place_id)
+        if not place:
             raise ValueError("Place must be a valid Place instance.")
-        return place
+        return place_id
 
-    def validate_user(self, user):
-        from app.models.user import User
-        if not isinstance(user, User):
+    def validate_user(self, user_id):
+        from app.services import facade
+        user = facade.user_repo.get(user_id)
+        if not user:
             raise ValueError("User must be a valid User instance.")
-        return user
+        return user_id
 
     def __str__(self):
         return (f"Review({self.id}, {self.text[:30]}..., Rating: {self.rating}, "

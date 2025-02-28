@@ -7,16 +7,19 @@ from app.models.amenity import Amenity
 
 
 class Place(BaseModel):
-    def __init__(self, title, description, price, latitude, longitude, owner):
+    def __init__(self, title, description, price, latitude, longitude, owner_id, amenities=None):
         super().__init__()
         self.title = self.validate_title(title)
         self.description = description
         self.price = self.validate_price(price)
         self.latitude = self.validate_latitude(latitude)
         self.longitude = self.validate_longitude(longitude)
-        self.owner = self.validate_owner(owner)
+        self.owner_id = self.validate_owner(owner_id)
         self.reviews = [] # List of related reviews
-        self.amenities = [] # List of related amenities
+        if amenities:
+            self.amenities = amenities # List of related amenities
+        else:
+            self.amenities = []
 
     def validate_title(self, title):
         if not title or len(title) > 100:
@@ -38,21 +41,22 @@ class Place(BaseModel):
             raise ValueError("Longitude must be between -180.0 and 180.0.")
         return longitude
 
-    def validate_owner(self, owner):
-        from app.models.user import User
-        if not isinstance(owner, User):
+    def validate_owner(self, owner_id):
+        from app.services import facade
+        owner = facade.user_repo.get(owner_id)
+        if not owner:
             raise ValueError("Owner must be a valid User instance.")
-        return owner
+        return owner_id
 
     def add_review(self, review):
         if not isinstance(review, Review):
             raise TypeError("the review does not exist")
         self.reviews.append(review)
 
-    def add_amenity(self, amenity):
-        if not isinstance(amenity, Amenity):
+    def add_amenity(self, amenities):
+        if not isinstance(amenities, Amenity):
             raise TypeError("the amenity does not exist")
-        self.amenities.append(amenity)
+        self.amenities.append(amenities)
 
     def list_reviews(self):
         for x in self.reviews:
