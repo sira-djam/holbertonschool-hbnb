@@ -47,7 +47,7 @@ class ReviewResource(Resource):
                 'rating': review.rating, 'user_id': review.user_id,
                 'place_id': review.place_id}, 200
 
-    @api.expect(review_model)
+    @api.expect(review_model, validate=True)
     @api.response(200, 'Review updated successfully')
     @api.response(404, 'Review not found')
     @api.response(400, 'Invalid input data')
@@ -72,9 +72,13 @@ class ReviewResource(Resource):
 class PlaceReviewList(Resource):
     @api.response(200, 'List of reviews for the place retrieved successfully')
     @api.response(404, 'Place not found')
+    @api.response(404, 'Review not found')
     def get(self, place_id):
         """Get all reviews for a specific place"""
-        reviews = facade.get_reviews_by_place()
-        if not reviews:
+        reviews = facade.get_reviews_by_place(place_id)
+        if reviews == "no place":
+            return {'error': 'Place not found'}, 404
+        if reviews == "no review":
             return {'error': 'Review not found'}, 404
-        return reviews, 200
+        return [{'id': review.id, 'text': review.text,
+                'rating': review.rating} for review in reviews], 200

@@ -87,11 +87,14 @@ class HBnBFacade:
     def get_reviews_by_place(self, place_id):
         reviews = self.review_repo.get_all()
         place_reviews = []
+        place = self.get_place(place_id)
+        if not place:
+            return "no place"
         for review in reviews:
-            if review.place.id == place_id:
+            if review.place_id == place.id:
                 place_reviews.append(review)
         if place_reviews == []:
-            return 404
+            return "no review"
         return place_reviews
 
     def update_review(self, review_id, review_data):
@@ -105,5 +108,5 @@ class HBnBFacade:
     def delete_review(self, review_id):
         review = self.review_repo.get(review_id)
         if not review:
-            return None
+            return 404
         return self.review_repo.delete(review_id)
