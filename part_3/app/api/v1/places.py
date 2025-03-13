@@ -1,5 +1,6 @@
 from flask_restx import Namespace, Resource, fields
 from app.services import facade
+from flask_jwt_extended import jwt_required, get_jwt_identity
 
 api = Namespace('places', description='Place operations')
 
@@ -39,8 +40,10 @@ class PlaceList(Resource):
     @api.expect(place_model, validate=True)
     @api.response(201, 'Place successfully created')
     @api.response(400, 'Invalid input data')
+    @jwt_required()
     def post(self):
         """Register a new place"""
+        current_user = get_jwt_identity()
         place_data = api.payload
         new_place = facade.create_place(place_data)
         return {'id': new_place.id, 'title': new_place.title,
@@ -86,10 +89,14 @@ class PlaceResource(Resource):
     @api.response(200, 'Place updated successfully')
     @api.response(404, 'Place not found')
     @api.response(400, 'Invalid input data')
+    @jwt_required()
     def put(self, place_id):
         """Update a place's information"""
+        current_user = get_jwt_identity()
         place_data = api.payload
         place = facade.update_place(place_id, place_data)
+        if place.owner_id != current_user:
+            return {'error': 'Unauthorized action'}, 403
         if place == 404:
             return {'error': 'Place not found'}, 404
         return {'message': 'Place updated successfully'}, 200
