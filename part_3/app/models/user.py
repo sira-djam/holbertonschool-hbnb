@@ -54,4 +54,4 @@ class User(BaseModel):
         return False
 
     def verify_password(self, password):
-        return bcrypt.check_password_hash(self.password, password)
+        return bcrypt.checkpw(password.encode('utf-8'), self.password.encode('utf-8'))
