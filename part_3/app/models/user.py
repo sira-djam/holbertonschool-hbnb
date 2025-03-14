@@ -7,14 +7,14 @@ from app.models.basemodel import BaseModel
 import bcrypt
 
 class User(BaseModel):
-    def __init__(self, first_name, last_name, email, is_admin=False):
+    def __init__(self, first_name, last_name, email, password, is_admin=False):
         super().__init__()
         self.first_name = self.validate_first_name(first_name)
         self.last_name = self.validate_last_name(last_name)
         self.email = self.validate_email(email)
         self.is_admin = is_admin
         self.places = [] # List of places owned
-        self.password
+        self.password = password
 
     def validate_first_name(self, first_name):
         if not first_name or len(first_name) > 50:
