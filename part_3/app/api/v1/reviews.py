@@ -23,7 +23,8 @@ class ReviewList(Resource):
         current_user = get_jwt_identity()
         review_data = api.payload
         new_review = facade.create_review(review_data)
-        if review_data['place_id'] in current_user.places:
+        place = facade.get_place(new_review.place_id)
+        if place.owner_id == current_user['id']:
             return {'error': 'You cannot review your own place.'}, 400
         all_reviews = facade.get_all_reviews()
         for review in all_reviews:
