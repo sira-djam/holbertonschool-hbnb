@@ -95,7 +95,7 @@ class PlaceResource(Resource):
         current_user = get_jwt_identity()
         place_data = api.payload
         place = facade.update_place(place_id, place_data)
-        if place.owner_id != current_user:
+        if place.owner_id != current_user['id']:
             return {'error': 'Unauthorized action'}, 403
         if place == 404:
             return {'error': 'Place not found'}, 404
