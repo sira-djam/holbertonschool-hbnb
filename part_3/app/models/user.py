@@ -48,7 +48,7 @@ class User(BaseModel):
         return f"User({self.id}, {self.first_name} {self.last_name}, {self.email}, Admin: {self.is_admin}, Created at: {self.created_at}, Last updated: {self.updated_at})"
 
     def hash_password(self, password):
-        self.password = bcrypt.generate_password_hash(password).decode('utf-8')
+        self.password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
         if len(self.password) == 60 and self.password.startswith('$2b$'):
             return True
         return False
