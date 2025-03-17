@@ -21,12 +21,12 @@ class ReviewList(Resource):
     def post(self):
         """Register a new review"""
         current_user = get_jwt_identity()
+        all_reviews = facade.get_all_reviews()
         review_data = api.payload
-        new_review = facade.create_review(review_data)
-        place = facade.get_place(new_review.place_id)
+        place = facade.get_place(review_data['place_id'])
         if place.owner_id == current_user['id']:
             return {'error': 'You cannot review your own place.'}, 400
-        all_reviews = facade.get_all_reviews()
+        new_review = facade.create_review(review_data)
         for review in all_reviews:
             if new_review.place_id == review.place_id and new_review.user_id == review.user_id:
                 return {'error': 'You have already reviewed this place'}, 400
@@ -66,9 +66,10 @@ class ReviewResource(Resource):
         """Update a review's information"""
         current_user = get_jwt_identity()
         review_data = api.payload
-        review = facade.update_review(review_id, review_data)
-        if review.user_id != current_user:
+        initial_review = facade.get_review(review_id)
+        if initial_review.user_id != current_user['id']:
             return {'error': 'Unauthorized action'}, 403
+        review = facade.update_review(review_id, review_data)
         if review == 404:
             return {'error': 'Review not found'}, 404
         return {'message': 'Review updated successfully'}, 200
@@ -79,9 +80,10 @@ class ReviewResource(Resource):
     def delete(self, review_id):
         """Delete a review"""
         current_user = get_jwt_identity()
-        review = facade.delete_review(review_id)
-        if review.user_id != current_user:
+        initial_review = facade.get_review(review_id)
+        if initial_review.user_id != current_user['id']:
             return {'error': 'Unauthorized action'}, 403
+        review = facade.delete_review(review_id)
         if review == 404:
             return {'error': 'Review not found'}, 404
         return {'message': 'Review deleted successfully'}, 200
