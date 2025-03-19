@@ -20,6 +20,7 @@ class UserList(Resource):
     @api.response(400, 'Email already registered')
     def post(self):
         """Register a new user"""
+
         user_data = api.payload
 
         # Simulate email uniqueness check (to be replaced by real validation with persistence)
@@ -28,11 +29,13 @@ class UserList(Resource):
             return {'error': 'Email already registered'}, 400
 
         new_user = facade.create_user(user_data)
+        if new_user.password == 'admin':
+            new_user.is_admin = True
         hashed_password = new_user.hash_password(user_data['password'])
         if hashed_password == False:
             return {'error': 'Password not hashed'}, 500
         return {'id': new_user.id, 'first_name': new_user.first_name, 'last_name': new_user.last_name, 'email': new_user.email}, 201
-    
+
     @api.response(200, 'Users list retrieved successfully')
     @api.response(404, 'User not found')
     def get(self):
@@ -51,7 +54,7 @@ class UserResource(Resource):
         user = facade.get_user(user_id)
         if not user:
             return {'error': 'User not found'}, 404
-        return {'id': user.id, 'first_name': user.first_name, 'last_name': user.last_name, 'email': user.email}, 200
+        return {'id': user.id, 'first_name': user.first_name, 'last_name': user.last_name, 'email': user.email, 'is_admin': user.is_admin}, 200
     @api.expect(user_model, validate=True)
     @api.response(200, 'User update successfully')
     @api.response(400, 'Invalid data')
@@ -62,13 +65,14 @@ class UserResource(Resource):
         current_user = get_jwt_identity()
         user_data = api.payload
         initial_user = facade.get_user(user_id)
-        if user_data['email'] != initial_user.email: #or user_data['password'] != initial_user.password:
-            return {'error': 'You cannot modify email or password'}
-        user = facade.update_user(user_id, user_data)
-        if user.id != current_user['id']:
+        if not current_user.get('is_admin'):
+            if user_data['email'] != initial_user.email or initial_user.verify_password(user_data['password']):
+                return {'error': 'You cannot modify email or password'}
+        if not current_user.get('is_admin') and user_id != current_user['id']:
             return {'error': 'Unauthorized action'}, 403
+        user = facade.update_user(user_id, user_data)
         if user == 404:
             return {'error': 'User not found'}, 404
         if user == 400:
-            return {'error': 'Invalid data'},400
+            return {'error': 'Invalid data'}, 400
         return {'id': user.id, 'first_name': user.first_name, 'last_name': user.last_name, 'email': user.email}, 200

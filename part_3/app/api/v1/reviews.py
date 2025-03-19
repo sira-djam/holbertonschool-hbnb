@@ -67,7 +67,7 @@ class ReviewResource(Resource):
         current_user = get_jwt_identity()
         review_data = api.payload
         initial_review = facade.get_review(review_id)
-        if initial_review.user_id != current_user['id']:
+        if not current_user.get('is_admin') and initial_review.user_id != current_user['id']:
             return {'error': 'Unauthorized action'}, 403
         review = facade.update_review(review_id, review_data)
         if review == 404:
@@ -81,7 +81,7 @@ class ReviewResource(Resource):
         """Delete a review"""
         current_user = get_jwt_identity()
         initial_review = facade.get_review(review_id)
-        if initial_review.user_id != current_user['id']:
+        if not current_user.get('is_admi') and initial_review.user_id != current_user['id']:
             return {'error': 'Unauthorized action'}, 403
         review = facade.delete_review(review_id)
         if review == 404:
