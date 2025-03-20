@@ -9,7 +9,6 @@ from app.api.v1.admin import api as admin_ns
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager
 from flask_sqlalchemy import SQLAlchemy
-from app import db
 
 bcrypt = Bcrypt()
 jwt = JWTManager()
