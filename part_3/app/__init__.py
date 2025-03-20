@@ -8,9 +8,12 @@ from app.api.v1.auth import api as auth_ns
 from app.api.v1.admin import api as admin_ns
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager
+from flask_sqlalchemy import SQLAlchemy
+from app import db
 
 bcrypt = Bcrypt()
 jwt = JWTManager()
+db = SQLAlchemy()
 
 def create_app(config_class="config.DevelopmentConfig"):
     app = Flask(__name__)
@@ -19,6 +22,8 @@ def create_app(config_class="config.DevelopmentConfig"):
     app.config['SECRET_KEY'] = 'your_secret_key'
     bcrypt.init_app(app)
     jwt.init_app(app)
+    db.init_app(app)
+    db.create_all()
 
     #Register the users namespace
     api.add_namespace(users_ns, path='/api/v1/users')
