@@ -17,6 +17,8 @@ class User(BaseModel):
     password = db.Column(db.String(128), nullable=False)
     is_admin = db.Column(db.Boolean, default=False)
 
+    reviews = db.relationship('Review', backref='user', lazy=True, cascade='all, delete')
+
     def __init__(self, first_name, last_name, email, password, is_admin=False):
         super().__init__()
         self.first_name = self.validate_first_name(first_name)
@@ -57,10 +59,10 @@ class User(BaseModel):
         return f"User({self.id}, {self.first_name} {self.last_name}, {self.email}, Admin: {self.is_admin}, Created at: {self.created_at}, Last updated: {self.updated_at})"
 
     def hash_password(self, password):
-        self.password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+        self.password = bcrypt.generate_password_hash(password).decode('utf-8')
         if len(self.password) == 60 and self.password.startswith('$2b$'):
             return True
         return False
 
     def verify_password(self, password):
-        return bcrypt.checkpw(password.encode('utf-8'), self.password.encode('utf-8'))
+        return bcrypt.check_password_hash(self.password, password)

@@ -2,8 +2,15 @@
 
 
 from app.models.basemodel import BaseModel
+from app import db
 
 class Amenity(BaseModel):
+    __tablename__ = 'amenities'
+
+    name = db.Column(db.String(50), nullable=False)
+    owner_id = db.Column(db.String(36), db.ForeignKey('users.id'), nullable=True)
+    owner = db.relationship('User', backref='amenities', lazy=True)
+
     def __init__(self, name):
         super().__init__()
         self.name = self.validate_name(name)
