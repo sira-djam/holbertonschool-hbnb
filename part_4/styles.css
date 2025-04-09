@@ -1,0 +1,116 @@
+/*
+  This is a SAMPLE File to get you started. Follow the instructions on the project to complete the tasks.
+  You'll probably need to override some of theese styles.
+*/
+
+*/* Paramètres de base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif; /* Vous pouvez changer cette police */
+}
+
+body {
+    background-color: #f4f4f4; /* Couleur de fond personnalisable */
+    color: #333; /* Couleur du texte personnalisable */
+}
+
+header {
+    background-color: #5E4B8B; /* Violet pour le header */
+    color: #fff; /* Couleur du texte du header */
+    padding: 1rem;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 1rem;
+}
+
+main {
+    padding: 2rem;
+}
+
+/* Cartes des lieux (place cards) */
+.place-card {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff; /* Fond blanc pour les cartes */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    transition: background-color 0.3s ease; /* Transition pour les couleurs */
+}
+
+.place-card:hover {
+    background-color: #F8E47C; /* Jaune pour les cartes au survol */
+}
+
+/* Cartes des avis (review cards) */
+.review-card {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff; /* Fond blanc pour les cartes */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    transition: background-color 0.3s ease; /* Transition pour les couleurs */
+}
+
+.review-card:hover {
+    background-color: #F8E47C; /* Jaune pour les cartes au survol */
+}
+
+/* Couleurs personnalisées - Palette Jaune et Violet */
+.place-card, .review-card {
+    background-color: #F8E47C; /* Jaune pour le fond des cartes */
+}
+
+/* Style pour le bouton de soumission du formulaire de connexion */
+button {
+    background-color: #F8E47C; /* Jaune pour le bouton */
+    color: #5E4B8B; /* Violet pour le texte du bouton */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #5E4B8B; /* Violet au survol */
+    color: white; /* Texte blanc au survol */
+}
+
+/* Message d'erreur (si la connexion échoue) */
+#error-message {
+    color: red;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+/* Police personnalisée via Google Fonts ou une autre source */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Applique la nouvelle police choisie à l'ensemble du site */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Favicon (icône de l'application) */
+link[rel="icon"] {
+    href: "path/to/custom-favicon.ico"; /* Vous pouvez définir ici votre favicon */
+}
+
+/* Media Queries pour la réactivité */
+@media (max-width: 768px) {
+    main {
+        padding: 1rem;
+    }
+
+    .place-card, .review-card {
+        margin: 10px;
+        padding: 8px;
+    }
+}

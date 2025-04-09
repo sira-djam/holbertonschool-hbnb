@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Details</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" id="home-link">Home</a>
+            <a href="login.html" id="login-link">Login</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Section for displaying place details -->
+        <section class="place-details">
+            <h1 class="place-name">Place Name</h1>
+            <div class="place-info">
+                <p><strong>Host:</strong> John Doe</p>
+                <p><strong>Price:</strong> 150€ per night</p>
+                <p><strong>Description:</strong> A beautiful place in the heart of the city. Perfect for tourists.</p>
+                <p><strong>Amenities:</strong> Wi-Fi, Air Conditioning, Kitchen, Pool</p>
+            </div>
+        </section>
+
+        <!-- Section for displaying reviews -->
+        <section class="reviews">
+            <h2>Reviews</h2>
+            <div id="reviews-list">
+                <!-- Reviews will be populated dynamically -->
+                <div class="review-card">
+                    <p><strong>John Smith</strong> - Rating: 5/5</p>
+                    <p>Great place, highly recommend!</p>
+                </div>
+                <div class="review-card">
+                    <p><strong>Jane Doe</strong> - Rating: 4/5</p>
+                    <p>Nice stay, but a bit noisy at night.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section for adding a new review if user is logged in -->
+        <section id="add-review-section">
+            <!-- Button will be dynamically shown based on login status -->
+            <button class="add-review" id="add-review-button">Add Review</button>
+
+            <!-- Optional: Form for adding a review if user is logged in -->
+            <form id="add-review-form" class="form" style="display: none;">
+                <h3>Add a Review</h3>
+                <label for="review-comment">Comment:</label>
+                <textarea id="review-comment" required></textarea>
+                <label for="review-rating">Rating (1 to 5):</label>
+                <input type="number" id="review-rating" min="1" max="5" required />
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
